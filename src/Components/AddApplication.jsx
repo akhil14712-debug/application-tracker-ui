@@ -2,19 +2,23 @@ import React, { useState,useEffect } from 'react'
 import { createApplication, getAppliById, updateAppli } from '../Service/ApplicationService'
 import { useNavigate, useParams } from 'react-router-dom'
 
+import { toast } from 'react-toastify'
+
 const AddApplication = () => {
     const [compName , setCompName] = useState("")
     const [role,setRole] = useState("")
     const [appliDate ,setAppliDate] = useState("")
     const [status , setStatus] = useState("")
     const [loca , setLoca] = useState("")
-
+    const [career ,setCareer] = useState("")
+    const [error,setError] = useState({})
 
     const {id} = useParams()
     const navigate = useNavigate()
 
 
     useEffect(()=>{
+      if(id){
         getAppliById(id)
         .then(res=>{
             setCompName(res.data.companyName)
@@ -22,19 +26,26 @@ const AddApplication = () => {
             setAppliDate(res.data.appliDate)
             setStatus(res.data.status)
             setLoca(res.data.location)
+            setCareer(res.data.careerLink)
         })
+      }
     },[id])
 
 
     function addAndUpdate(e){
         e.preventDefault()
 
+        if (!validateForm()) {
+        return;
+    }
+
         const application = {
             companyName:compName,
             role:role,
             appliDate:appliDate,
             status:status,
-            location:loca
+            location:loca,
+            careerLink:career
         }
         console.log(application)
 
@@ -48,16 +59,55 @@ const AddApplication = () => {
         }
         else{
             createApplication(application)
-        .then(res => navigate("/listAppli"))
-        
+        .then(res => {
+          toast.success("Application Added Successfully!")
+          
+          setTimeout(()=>{navigate('/listAppli')},500)
+          })
+          
         .catch(err => console.log(err))
         }   
+    }
+
+    function validateForm(){
+      let newError = {}
+
+      if(!compName.trim()){
+        newError.compName = "Company Name is required"
+      }
+
+      if(!role.trim()){
+        newError.role = "Role is required"
+      }
+
+      if(!appliDate.trim()){
+        newError.appliDate = "Application Date is required"
+      }
+
+      if(!status.trim()){
+        newError.status = "Status is required"
+      }
+
+       if(!loca.trim()){
+        newError.loca = "Location is required"
+      }
+
+       if(!career.trim()){
+        newError.career = "Careers is required"
+      }
+
+      setError(newError);
+
+    return Object.keys(newError).length === 0;
+
     }
 
 
     
   return (
+    
      <div className="form-page">
+      
       <div className="form-card">
 
         <h2 className="form-title">Add Application</h2>
@@ -68,6 +118,7 @@ const AddApplication = () => {
             <label>Company Name</label>
             <input type="text" placeholder="e.g. Google" value={compName} 
             onChange={(e)=>setCompName(e.target.value)}/>
+            {error.compName && (<p style={{"color":"red","fontSize":"12px"}}>{error.compName}</p>)}
           </div>
 
           <div className="form-group">
@@ -101,6 +152,13 @@ const AddApplication = () => {
             <input type="text" placeholder="e.g. Bangalore, Remote" 
             value={loca}
             onChange={(e)=>setLoca(e.target.value)}/>
+          </div>
+
+           <div className="form-group">
+            <label>Career Link</label>
+            <input type="text" placeholder="e.g. https://careers.google.com/jobs/123" 
+            value={career} 
+            onChange={(e)=>setCareer(e.target.value)}/>
           </div>
 
           <hr className="form-divider" />

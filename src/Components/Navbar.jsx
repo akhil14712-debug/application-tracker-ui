@@ -1,11 +1,18 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { logout } from '../Service/AuthAService'
 
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const navigate = useNavigate()
+
+  function handleLogOut(){
+    logout();
+    navigate("/appli/login")
+    setMenuOpen(false)
+  }
 
   return (
     <nav className="navbar">
@@ -15,17 +22,23 @@ const Navbar = () => {
         <div className="navbar-logo">
           <span className="logo-emoji">💼</span>
           <div className="logo-text-block">
-            <span className="logo-title">AppTrackr</span>
-            <span className="logo-sub">Complete jobs you applied</span>
+            <span className="logo-title">Stagewise </span>
+            <span className="logo-sub">tracking every stage of application</span>
           </div>
         </div>
 
 
         {/* Right */}
         <div className="nav-right">
-          <button className="btn-add" onClick={()=> {navigate("/appli/add"),
-            setMenuOpen(!menuOpen)
+          <button className="btn-add" onClick={()=> navigate('/')}>Dashboard</button>
+          <button className="btn-add" onClick={()=> navigate('/listAppli')}>Applications</button>
+          <button className="btn-add" onClick={()=> {navigate("/appli/add")
           }}>+ Add Job</button>
+          <button className="btn-add"
+          onClick={()=> navigate("/appli/register")}
+          >Sign Up</button>
+          <button className="btn-add" onClick={handleLogOut}>Log Out</button>
+         
           <div className="avatar">YOU</div>
         </div>
 
@@ -42,6 +55,11 @@ const Navbar = () => {
         <a href="/listAppli"  className="mobile-link"        onClick={() => setMenuOpen(false)}>Applications</a>
         <a href="#"  className="mobile-link"        onClick={() => setMenuOpen(false)}>Interviews</a>
         <a href="#"  className="mobile-link"        onClick={() => setMenuOpen(false)}>Offers</a>
+        <button className="btn-add btn-add--full"  onClick={()=>{navigate("/appli/register"),
+          setMenuOpen(false)
+        }}>Sign up</button>
+        <button className="btn-add btn-add--full"  onClick={handleLogOut} 
+        >Logout</button>
         <button className="btn-add btn-add--full" onClick={() => {
           navigate("/appli/add")
           setMenuOpen(false)   
