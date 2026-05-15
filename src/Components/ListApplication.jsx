@@ -39,7 +39,19 @@ const ListApplication = () => {
     },[value,pageNo,pageSize,sortBy,sortDir])
 
     useEffect(() => {
-    getCurrentUser().then(setUser);}, []);
+  getCurrentUser().then(setUser)
+},[]);
+
+    useEffect(()=>{
+       if (user){
+     listCounts().
+    then(res=>{
+      setApply(res.data.applyCnt);
+      setActive(res.data.active);
+      setPend(res.data.pending);
+      setInter(res.data.interv);
+    })}
+    },[user])
     
     
     
@@ -75,13 +87,6 @@ const ListApplication = () => {
         }
     }
 
-    listCounts().
-    then(res=>{
-      setApply(res.data.applyCnt);
-      setActive(res.data.active);
-      setPend(res.data.pending);
-      setInter(res.data.interv);
-    })
 
     
 
