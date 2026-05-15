@@ -39,7 +39,7 @@ const Login = () => {
         <div className="field">
           <label>Password</label>
           <div className="input-wrap">
-            <input type="password" placeholder="Min. 8 characters" value={password}
+            <input type="password" placeholder="Min. 4 characters" value={password}
               onChange={(e) => setPassword(e.target.value)} required />
           </div>
         </div>
@@ -51,8 +51,8 @@ const Login = () => {
         </button>
       </form>
 
-      <p className="login-link">Already have an account? <a 
-      >Sign in</a></p>
+      
+      <p className="login-link">Create an account ?<button className="btn-login" onClick={()=>navigate("/appli/register")}>Sign</button></p>
     </div>
   </div>
     

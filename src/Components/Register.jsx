@@ -46,7 +46,7 @@ const Register = () => {
         <div className="field">
           <label>Password</label>
           <div className="input-wrap">
-            <input type="password" placeholder="Min. 8 characters" value={password}
+            <input type="password" placeholder="Min. 4 characters" value={password}
               onChange={(e) => setPassword(e.target.value)} required />
           </div>
         </div>
