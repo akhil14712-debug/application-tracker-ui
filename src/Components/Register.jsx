@@ -58,7 +58,7 @@ const Register = () => {
         </button>
       </form>
 
-      <p className="login-link">Already have an account? <a href="/appli/login">Sign in</a></p>
+      <p className="login-link">Already have an account? <button className="btn-login" onClick={()=>navigate("/appli/login")}>Login</button></p>
     </div>
   </div>
     </>

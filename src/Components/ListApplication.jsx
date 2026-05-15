@@ -96,7 +96,12 @@ const ListApplication = () => {
 
    <>
    <div className="page">
-    <h4 style={{"color":"white"}}>Hi, {user?.username}!</h4>
+    <div className="user-greeting">
+  <div className="user-avatar">
+    {user?.username?.charAt(0)}
+  </div>
+  <h4>Hi, {user?.username}!</h4>
+</div>
     <div className="count-container">
   <div className="count-card">
     <span className="count-number">{apply}</span>
