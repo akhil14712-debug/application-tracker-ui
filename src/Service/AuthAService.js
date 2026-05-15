@@ -1,4 +1,4 @@
-const BASE = "/api/auth";
+const BASE = `${import.meta.env.VITE_API_URL}/api/auth`;
 
 export const login = async (username,password) => {
     const res = await fetch(`${BASE}/login`,{
@@ -27,7 +27,7 @@ export const getCurrentUser = async () => {
     const token = localStorage.getItem("token");
     if (!token) return null;
 
-    const res = await fetch("/api/auth/me", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/me`,  {
         headers: { Authorization: `Bearer ${token}` }
     });
 
