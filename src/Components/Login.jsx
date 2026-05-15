@@ -52,7 +52,12 @@ const Login = () => {
       </form>
 
       
-      <p className="login-link">Create an account ?<button className="btn-login" onClick={()=>navigate("/appli/register")}>Sign</button></p>
+      <p className="login-link">
+  Don't have an account? 
+  <span onClick={() => navigate("/appli/register")} className="link-text" style={{"color":"black"}}>
+    Sign Up
+  </span>
+</p>
     </div>
   </div>
     
