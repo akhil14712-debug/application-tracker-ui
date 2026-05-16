@@ -28,9 +28,10 @@ const ListApplication = () => {
     const [active ,setActive] = useState(0);
     const [pend,setPend] = useState(0);
     const [inter,setInter] = useState(0);
-
-
     const [user, setUser] = useState(null);
+
+
+    const [real,setReal] = useState(false);
 
     const navigate = useNavigate();
     useEffect(()=>{
