@@ -7,25 +7,43 @@ const Register = () => {
 
     const [username ,setUsername] = useState("");
     const [password , setPassword] = useState("");
-    const [error, setError] = useState(""); 
+    const [errors, setErrors] = useState(""); 
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     async function registerForm(e) {
         e.preventDefault();
-        setError("");
-        setLoading(true);
+        setErrors("");
+        
+        const validationErrors = validatePassword(password);
+    if (validationErrors.length > 0) {
+      setErrors(validationErrors[0]);
+      return;
+    }
+    setLoading(true);
         try {
             await register(username, password);
             toast.success("Successfully Registered!")
                       setTimeout(()=>{ navigate("/appli/login")},1000)
            ;
         } catch (err) {
-            setError("Registration failed. Username may already be taken.");
+            setErrors("Registration failed. Username may already be taken.");
         } finally {
             setLoading(false);
         }
     }
+
+    const validatePassword = (password) => {
+ 
+  
+  const errors = [];
+    if (password.length < 8) errors.push("At least 8 characters");
+    if (!/[A-Z]/.test(password)) errors.push("At least one uppercase letter");
+    if (!/[a-z]/.test(password)) errors.push("At least one lowercase letter");
+    if (!/[0-9]/.test(password)) errors.push("At least one number");
+    if (!/[!@#$%^&*]/.test(password)) errors.push("At least one special character (!@#$%^&*)");
+    return errors;
+};
    
   return (
     <>
@@ -46,12 +64,12 @@ const Register = () => {
         <div className="field">
           <label>Password</label>
           <div className="input-wrap">
-            <input type="password" placeholder="Min. 4 characters" value={password}
+            <input type="password" placeholder="Min. 8 characters" value={password}
               onChange={(e) => setPassword(e.target.value)} required />
           </div>
         </div>
 
-        {error && <p style={{ color: 'red', fontSize: 13 }}>{error}</p>}
+        {errors && <p style={{ color: 'red', fontSize: 13 }}>{errors}</p>}
 
         <button className="submit-btn" type="submit" disabled={loading}>
           {loading ? "Creating account..." : "Create account"}
