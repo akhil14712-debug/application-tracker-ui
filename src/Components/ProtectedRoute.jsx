@@ -7,7 +7,7 @@ const ProtectedRoute = ({children}) => {
     if(!token){
         return <Navigate to="/appli/login" replace/>
     }
-  return Children
+  return children
 }
 
 export default ProtectedRoute
