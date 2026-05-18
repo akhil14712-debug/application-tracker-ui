@@ -30,7 +30,7 @@ const Navbar = () => {
 
         {/* Right */}
         <div className="nav-right">
-          <button className="btn-add" onClick={()=> navigate('/')}>Dashboard</button>
+          <button className="btn-add" onClick={()=> navigate('/')}>Home</button>
           <button className="btn-add" onClick={()=> navigate('/listAppli')}>Applications</button>
           <button className="btn-add" onClick={()=> {navigate("/appli/add")
           }}>+ Add Job</button>
@@ -51,7 +51,7 @@ const Navbar = () => {
       </div>
 
        <div className={menuOpen ? 'mobile-menu mobile-menu--open' : 'mobile-menu'}>
-        <a href="/"  className="mobile-link active" onClick={() => setMenuOpen(false)}>Dashboard</a>
+        <a href="/"  className="mobile-link active" onClick={() => setMenuOpen(false)}>Home</a>
         <a href="/listAppli"  className="mobile-link"        onClick={() => setMenuOpen(false)}>Applications</a>
         <button className="btn-add btn-add--full"  onClick={()=>{navigate("/appli/register"),
           setMenuOpen(false)
