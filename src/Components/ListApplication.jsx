@@ -102,12 +102,7 @@ const ListApplication = () => {
     {user?.username?.charAt(0)}
   </div>
   <h4>Hi, {user?.username}!</h4>
-  <button className="btn-add btn-add--full" onClick={() => {
-          navigate("/appli/add")
-            
-        }}>
-          + Add Job
-        </button>
+  
 </div>
     <div className="count-container">
   <div className="count-card">
