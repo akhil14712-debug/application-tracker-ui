@@ -126,6 +126,7 @@ const AddApplication = () => {
             <input type="text" placeholder="e.g. Software Engineer" 
             value={role} 
             onChange={(e)=>setRole(e.target.value)}/>
+              {error.role && (<p style={{"color":"red","fontSize":"12px"}}>{error.role}</p>)}
           </div>
 
           <div className="form-group">
@@ -133,6 +134,7 @@ const AddApplication = () => {
             <input type="date" 
             value={appliDate} 
             onChange={(e)=>setAppliDate(e.target.value)}/>
+             {error.appliDate && (<p style={{"color":"red","fontSize":"12px"}}>{error.appliDate}</p>)}
           </div>
 
           <div className="form-group">
@@ -152,6 +154,7 @@ const AddApplication = () => {
             <input type="text" placeholder="e.g. Bangalore, Remote" 
             value={loca}
             onChange={(e)=>setLoca(e.target.value)}/>
+             {error.loca && (<p style={{"color":"red","fontSize":"12px"}}>{error.loca}</p>)}
           </div>
 
            <div className="form-group">
@@ -159,6 +162,7 @@ const AddApplication = () => {
             <input type="text" placeholder="e.g. https://careers.google.com/jobs/123" 
             value={career} 
             onChange={(e)=>setCareer(e.target.value)}/>
+             {error.career && (<p style={{"color":"red","fontSize":"12px"}}>{error.career}</p>)}
           </div>
 
           <hr className="form-divider" />

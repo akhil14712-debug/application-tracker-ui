@@ -53,8 +53,6 @@ const Navbar = () => {
        <div className={menuOpen ? 'mobile-menu mobile-menu--open' : 'mobile-menu'}>
         <a href="/"  className="mobile-link active" onClick={() => setMenuOpen(false)}>Dashboard</a>
         <a href="/listAppli"  className="mobile-link"        onClick={() => setMenuOpen(false)}>Applications</a>
-        <a href="#"  className="mobile-link"        onClick={() => setMenuOpen(false)}>Interviews</a>
-        <a href="#"  className="mobile-link"        onClick={() => setMenuOpen(false)}>Offers</a>
         <button className="btn-add btn-add--full"  onClick={()=>{navigate("/appli/register"),
           setMenuOpen(false)
         }}>Sign up</button>

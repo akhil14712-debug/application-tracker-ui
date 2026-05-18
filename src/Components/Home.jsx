@@ -104,11 +104,70 @@ const teamMembers = [
         ))}
       </section>
 
+      {/* ── HOW IT WORKS ─────────────────────────────── */}
+<section className="jl-how">
+  <div className="jl-how__header">
+    <span className="jl-suggest__eyebrow">Simple Process</span>
+    <h2 className="jl-section__title">How StageWise Works</h2>
+    <p className="jl-how__sub">
+      Get started in minutes and never lose track of a job application again.
+    </p>
+  </div>
+
+  <div className="jl-how__grid">
+
+    <div className="jl-how__card">
+      <div className="jl-how__icon" style={{ background: "#FF6B6B22", color: "#FF6B6B" }}>
+        📝
+      </div>
+      <div className="jl-how__step">Step 1</div>
+      <h3 className="jl-how__title">Create an Account</h3>
+      <p className="jl-how__desc">
+        Sign up in seconds with just a username and password. No email verification needed.
+      </p>
+    </div>
+
+    <div className="jl-how__card">
+      <div className="jl-how__icon" style={{ background: "#A78BFA22", color: "#A78BFA" }}>
+        ➕
+      </div>
+      <div className="jl-how__step">Step 2</div>
+      <h3 className="jl-how__title">Add Your Applications</h3>
+      <p className="jl-how__desc">
+        Log every job you apply for — company name, role, date, location and career link.
+      </p>
+    </div>
+
+    <div className="jl-how__card">
+      <div className="jl-how__icon" style={{ background: "#4ECDC422", color: "#4ECDC4" }}>
+        🔄
+      </div>
+      <div className="jl-how__step">Step 3</div>
+      <h3 className="jl-how__title">Track Your Status</h3>
+      <p className="jl-how__desc">
+        Update application status — Applied, Interview, Offer, Rejected — all in one place.
+      </p>
+    </div>
+
+    <div className="jl-how__card">
+      <div className="jl-how__icon" style={{ background: "#FF8C4222", color: "#FF8C42" }}>
+        🏆
+      </div>
+      <div className="jl-how__step">Step 4</div>
+      <h3 className="jl-how__title">Land Your Dream Job</h3>
+      <p className="jl-how__desc">
+        Stay organized, follow up on time, and maximize your chances of getting hired.
+      </p>
+    </div>
+
+  </div>
+</section>
+
       {/* ── TRENDING JOBS ────────────────────────────── */}
       <section className="jl-section">
         <div className="jl-section__header">
           <h2 className="jl-section__title">Track Every Job Application in One Place</h2>
-          <a href="#" className="jl-section__link">→ View all applications</a>
+          <div className="jl-section__link" onClick={()=> navigate("/listAppli")}>→ View all applications</div>
         </div>
         <div className="jl-jobs-grid">
           {trendingJobs.map((job) => (
