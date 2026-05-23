@@ -243,7 +243,9 @@ const teamMembers = [
         <div className="jl-testimonial__left">
           <span className="jl-quote-mark">"</span>
           <blockquote className="jl-testimonial__text">
-            Our platform is so easy to use. We've hired about 40–50 different people worldwide in the past two years.
+            StageWise helped me stay on top of every application. 
+I could track interviews, follow-ups and offers 
+all in one place. Landing my dream job was never this organized.
           </blockquote>
           <div className="jl-testimonial__author">
             <strong>Lubaak Hole</strong>

@@ -11,6 +11,7 @@ import Register from './Components/Register'
 import Login from './Components/Login'
 import Home from './Components/Home'
 import ProtectedRoute from './Components/ProtectedRoute'
+import BotChat from './Components/BotChat'
 
 
 const App = () => {
@@ -28,6 +29,8 @@ const App = () => {
       <Route path="/listAppli/update-appli/:id" element={<AddApplication/>}></Route>
       <Route path="appli/register" element={<Register/>}></Route>
       <Route path="appli/login" element={<Login/>}></Route>
+
+      <Route path="chat/bot" element={<BotChat/>}></Route>
 
     </Routes>
 

@@ -190,6 +190,9 @@ const ListApplication = () => {
             </div>
              <button className="next-btn" disabled={pagination.isLast} onClick={() => setPageNo(pageNo+1)}>Next</button>
         </div>
+        <div className="bot-bar"><button onClick={()=>navigate("/chat/bot")}>
+    🤖</button>
+  </div>
 </div>
 
    </>
