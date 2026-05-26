@@ -16,9 +16,10 @@ const Login = () => {
       e.preventDefault()
         login(username,password)
         .then(res => {
-            navigate("/listAppli" )
+          toast.success("Application Added Successfully!")
+                    setTimeout(()=>{navigate('/listAppli')},500)
         })
-        .catch(err => console.log(err))
+        .catch(err => toast.success("Application Added Successfully!"))
         
     }
   return (
