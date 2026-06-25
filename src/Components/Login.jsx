@@ -18,12 +18,17 @@ const Login = () => {
       e.preventDefault()
         login(username,password)
         .then(res => {
-          toast.success("Application Added Successfully!")
+          toast.success("Loggin successfully!")
                     setTimeout(()=>{navigate('/listAppli')},500)
         })
-        .catch(err => toast.success("Application Added Successfully!"))
+        .catch(err => toast.success("Invalid credential!"))
         
     }
+
+
+    
+
+    
   return (
     <>
     <div className="auth-wrap">

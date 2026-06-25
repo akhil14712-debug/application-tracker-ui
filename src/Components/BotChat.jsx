@@ -40,7 +40,11 @@ const BotChat = () => {
       if (!res.ok) throw new Error();
       const reply = await res.text();
       setMessages((prev) => [...prev, { role: "assistant", text: reply }]);
-    } catch {
+    } catch(error) {
+      console.log(error)
+      console.log("Response:", error.response);
+      console.log("Data:", error.response?.data);
+      console.log("There is an issue  with the response from the bot")
       setMessages((prev) => [
         ...prev,
         { role: "assistant", text: "⚠️ Something went wrong. Please try again." },
