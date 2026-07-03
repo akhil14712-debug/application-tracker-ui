@@ -14,6 +14,8 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
+    const [name , setName] = useState();
+
     function LoginForm(e){
       e.preventDefault()
         login(username,password)
