@@ -157,6 +157,13 @@ const AddApplication = () => {
              {error.loca && (<p style={{"color":"red","fontSize":"12px"}}>{error.loca}</p>)}
           </div>
 
+          <div className="form-group">
+            <label>Resume</label>
+            <input type="file" placeholder="Add resume" 
+            />
+             {error.loca && (<p style={{"color":"red","fontSize":"12px"}}>{error.loca}</p>)}
+          </div>
+
            <div className="form-group">
             <label>Career Link</label>
             <input type="text" placeholder="e.g. https://careers.google.com/jobs/123" 
