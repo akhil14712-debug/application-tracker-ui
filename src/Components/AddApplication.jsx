@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import { createApplication, getAppliById, updateAppli } from '../Service/ApplicationService'
 import { useNavigate, useParams } from 'react-router-dom'
-
+import { uploadResume } from '../Service/ResumeService'
 import { toast } from 'react-toastify'
 
 const AddApplication = () => {
@@ -12,6 +12,8 @@ const AddApplication = () => {
     const [loca , setLoca] = useState("")
     const [career ,setCareer] = useState("")
     const [error,setError] = useState({})
+
+    const [resumeFile,setResumeFile] = useState(null)
 
     const {id} = useParams()
     const navigate = useNavigate()
@@ -102,6 +104,53 @@ const AddApplication = () => {
 
     }
 
+    // function addAndUpdate(e){
+    //   e.preventDefault()
+    //   if(!validateForm()){
+    //     return;
+    //   }
+
+    //   const application = {
+    //     companyName:compName,
+    //     role:role,
+    //     appliDate:appliDate,
+    //     status:status,
+    //     location:loca,
+    //     careerLink:career
+    //   }
+
+    //   if(id){
+    //     updateAppli(id,application)
+    //     .then(res => {
+    //       handleResumeUpload()
+    //       navigate('/listAppli')
+    //     })
+    //     .catch(err => console.log(err))
+    //   }
+    //   else{
+    //     createApplication(application)
+    //     .then(res => {
+    //       handleResumeUpload()
+    //       toast.success("Application added Successfully")
+    //       setTimeout(()=>{navigate('/listAPPLI')},500)
+    //     })
+    //     .catch(err => console.log(err))
+    //   }
+
+      function handleResumeUpload(){
+        if(!resumeFile) return
+        const userId = localStorage.getItem("userId")
+
+        if(!userId){
+          console.log("No userId found,skipping resume upload")
+          return
+        }
+
+        uploadResume(resumeFile,userId)
+        .then(res => console.log("Resume uploaded :", res.data))
+        .catch(err => console.log("Resume upload failed",err))
+      }
+
 
     
   return (
@@ -160,6 +209,8 @@ const AddApplication = () => {
           <div className="form-group">
             <label>Resume</label>
             <input type="file" placeholder="Add resume" 
+             accept=".pdf,.doc,.docx"
+             onChange = {(e) => setResumeFile(e.target.files[0])}
             />
              {error.loca && (<p style={{"color":"red","fontSize":"12px"}}>{error.loca}</p>)}
           </div>
@@ -191,5 +242,6 @@ const AddApplication = () => {
     </div>
   )
 }
+
 
 export default AddApplication

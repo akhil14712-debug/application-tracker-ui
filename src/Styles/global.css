@@ -1069,6 +1069,14 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,600;1,400&display=swap');
 
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+
+
 /* ── RESET & BASE ── */
 .jl-wrapper {
   font-family: 'Sora', sans-serif;
