@@ -161,8 +161,8 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div className={menuOpen ? 'mobile-menu mobile-menu--open' : 'mobile-menu'}>
-        <a href="/" className="mobile-link active" onClick={() => setMenuOpen(false)}>Home</a>
-        <a href="/listAppli" className="mobile-link" onClick={() => setMenuOpen(false)}>Applications</a>
+        <button className="btn-add btn-add--full" href="/"  onClick={() => { navigate('/');setMenuOpen(false)}}>Home</button>
+        <button  className="btn-add btn-add--full" href="/listAppli" onClick={() => { navigate("/appli/add");setMenuOpen(false)}}>Applications</button>
         <button className="btn-add btn-add--full" onClick={() => { navigate("/appli/register"); setMenuOpen(false) }}>Sign up</button>
         <button className="btn-add btn-add--full" onClick={handleLogOut}>Logout</button>
         <button className="btn-add btn-add--full" onClick={() => { navigate("/appli/add"); setMenuOpen(false) }}>+ Add Job</button>

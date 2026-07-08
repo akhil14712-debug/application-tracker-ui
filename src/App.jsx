@@ -12,6 +12,7 @@ import Login from './Components/Login'
 import Home from './Components/Home'
 import ProtectedRoute from './Components/ProtectedRoute'
 import BotChat from './Components/BotChat'
+import Footer from './Components/Footer'
 
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
       <Route path="chat/bot" element={<BotChat/>}></Route>
 
     </Routes>
+     <Footer/> 
 
  <ToastContainer position="top-right" autoClose={3000} />
 

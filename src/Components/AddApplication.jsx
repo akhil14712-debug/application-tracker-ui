@@ -104,38 +104,7 @@ const AddApplication = () => {
 
     }
 
-    // function addAndUpdate(e){
-    //   e.preventDefault()
-    //   if(!validateForm()){
-    //     return;
-    //   }
-
-    //   const application = {
-    //     companyName:compName,
-    //     role:role,
-    //     appliDate:appliDate,
-    //     status:status,
-    //     location:loca,
-    //     careerLink:career
-    //   }
-
-    //   if(id){
-    //     updateAppli(id,application)
-    //     .then(res => {
-    //       handleResumeUpload()
-    //       navigate('/listAppli')
-    //     })
-    //     .catch(err => console.log(err))
-    //   }
-    //   else{
-    //     createApplication(application)
-    //     .then(res => {
-    //       handleResumeUpload()
-    //       toast.success("Application added Successfully")
-    //       setTimeout(()=>{navigate('/listAPPLI')},500)
-    //     })
-    //     .catch(err => console.log(err))
-    //   }
+   
 
       function handleResumeUpload(){
         if(!resumeFile) return
