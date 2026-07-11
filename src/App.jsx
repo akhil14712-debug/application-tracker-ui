@@ -34,11 +34,11 @@ const App = () => {
       <Route path="chat/bot" element={<BotChat/>}></Route>
 
     </Routes>
-     <Footer/> 
+     
 
  <ToastContainer position="top-right" autoClose={3000} />
 
-
+<Footer/> 
     </>
    
   )

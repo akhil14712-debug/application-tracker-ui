@@ -5,6 +5,8 @@ import { login } from '../Service/AuthAService';
 
 import { toast } from 'react-toastify'
 
+import Loader from './Loader';
+
 
 const Login = () => {
 
@@ -18,12 +20,17 @@ const Login = () => {
 
     function LoginForm(e){
       e.preventDefault()
+      setError("");
+      setLoading(true);
         login(username,password)
         .then(res => {
           toast.success("Loggin successfully!")
                     setTimeout(()=>{navigate('/listAppli')},500)
         })
         .catch(err => toast.success("Invalid credential!"))
+        .finally(() => {
+          setLoading(false);
+        })
         
     }
 
@@ -43,6 +50,7 @@ const Login = () => {
           <label>Username</label>
           <div className="input-wrap">
             <input type="text" placeholder="e.g. johndoe" value={username}
+            disabled={loading}
               onChange={(e) => setUsername(e.target.value)} required />
           </div>
         </div>
@@ -51,6 +59,7 @@ const Login = () => {
           <label>Password</label>
           <div className="input-wrap">
             <input type="password" placeholder="Min. 4 characters" value={password}
+             disabled={loading}
               onChange={(e) => setPassword(e.target.value)} required />
           </div>
         </div>
@@ -58,8 +67,14 @@ const Login = () => {
         {error && <p style={{ color: 'red', fontSize: 13 }}>{error}</p>}
 
         <button className="submit-btn" type="submit" disabled={loading}>
-          {loading ? "Login..." : "Login"}
-        </button>
+                            {loading ? (
+                                <>
+                                    <Loader size={16} /> Logging in...
+                                </>
+                            ) : (
+                                "Login"
+                            )}
+                        </button>
       </form>
 
       

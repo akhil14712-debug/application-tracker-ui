@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { register } from '../Service/AuthAService';
 import { toast } from 'react-toastify'
 
+import Loader from './Loader';
+
+
 const Register = () => {
 
     const [username ,setUsername] = useState("");
@@ -57,6 +60,7 @@ const Register = () => {
           <label>Username</label>
           <div className="input-wrap">
             <input type="text" placeholder="e.g. johndoe" value={username}
+            disabled={loading}
               onChange={(e) => setUsername(e.target.value)} required />
           </div>
         </div>
@@ -65,15 +69,22 @@ const Register = () => {
           <label>Password</label>
           <div className="input-wrap">
             <input type="password" placeholder="Min. 8 characters" value={password}
+             disabled={loading}
               onChange={(e) => setPassword(e.target.value)} required />
           </div>
         </div>
 
         {errors && <p style={{ color: 'red', fontSize: 13 }}>{errors}</p>}
-
         <button className="submit-btn" type="submit" disabled={loading}>
-          {loading ? "Creating account..." : "Create account"}
-        </button>
+  {loading ? (
+    <>
+      <Loader size={16} /> Creating account...
+    </>
+  ) : (
+    "Create account"
+  )}
+</button>
+        
       </form>
 
       <p className="login-link">Already have an account? <button className="btn-login" onClick={()=>navigate("/appli/login")}>Login</button></p>
