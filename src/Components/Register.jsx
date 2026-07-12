@@ -8,7 +8,8 @@ import Loader from './Loader';
 
 const Register = () => {
 
-    const [username ,setUsername] = useState("");
+    const [username,setUsername] = useState("")
+    const [email ,setEmail] = useState("");
     const [password , setPassword] = useState("");
     const [errors, setErrors] = useState(""); 
     const [loading, setLoading] = useState(false);
@@ -25,7 +26,7 @@ const Register = () => {
     }
     setLoading(true);
         try {
-            await register(username, password);
+            await register(email, password,username);
             toast.success("Successfully Registered!")
                       setTimeout(()=>{ navigate("/appli/login")},1000)
            ;
@@ -56,12 +57,21 @@ const Register = () => {
       <p className="auth-sub">Start tracking your job applications</p>
 
       <form onSubmit={registerForm}>
+
         <div className="field">
-          <label>Username</label>
+        <label>Username</label>
+        <div className="input-wrap">
+        <input type="text" placeholder="e.g. Nihal M" value={username}
+      disabled={loading}
+      onChange={(e) => setUsername(e.target.value)} required />
+      </div>
+</div>
+        <div className="field">
+          <label>Email</label>
           <div className="input-wrap">
-            <input type="text" placeholder="e.g. johndoe" value={username}
+            <input type="text" placeholder="e.g. abc@gmail.com" value={email}
             disabled={loading}
-              onChange={(e) => setUsername(e.target.value)} required />
+              onChange={(e) => setEmail(e.target.value)} required />
           </div>
         </div>
 

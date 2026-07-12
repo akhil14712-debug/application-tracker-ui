@@ -1,10 +1,10 @@
 const BASE = `${import.meta.env.VITE_API_URL}/api/auth`;
 
-export const login = async (username,password) => {
+export const login = async (email,password) => {
     const res = await fetch(`${BASE}/login`,{
         method :"POST",
         headers: {"Content-Type":"application/json"},
-        body:JSON.stringify({username , password}),
+        body:JSON.stringify({email , password}),
     });
 
     if(!res.ok) throw new Error("Invalid credential")
@@ -13,12 +13,12 @@ export const login = async (username,password) => {
     return token;
 }
 
-export const register = async (username,password) => {
+export const register = async (email,password,username) => {
 
     const res = await fetch(`${BASE}/register`,{
         method:"POST",
         headers:{"Content-Type":"application/json"},
-        body: JSON.stringify({username,password}),
+        body: JSON.stringify({email,password,username}),
     });
     if(!res.ok) throw new Error ("Register failed")
 };

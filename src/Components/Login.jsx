@@ -10,7 +10,7 @@ import Loader from './Loader';
 
 const Login = () => {
 
-    const [username ,setUsername] = useState("");
+    const [email ,setEmail] = useState("");
     const [password , setPassword] = useState("");
     const [error, setError] = useState(""); 
     const [loading, setLoading] = useState(false);
@@ -22,7 +22,7 @@ const Login = () => {
       e.preventDefault()
       setError("");
       setLoading(true);
-        login(username,password)
+        login(email,password)
         .then(res => {
           toast.success("Loggin successfully!")
                     setTimeout(()=>{navigate('/listAppli')},500)
@@ -47,11 +47,11 @@ const Login = () => {
 
       <form onSubmit={LoginForm}>
         <div className="field">
-          <label>Username</label>
+          <label>Email</label>
           <div className="input-wrap">
-            <input type="text" placeholder="e.g. johndoe" value={username}
+            <input type="text" placeholder="e.g. abc@gmail.com" value={email}
             disabled={loading}
-              onChange={(e) => setUsername(e.target.value)} required />
+              onChange={(e) => setEmail(e.target.value)} required />
           </div>
         </div>
 
